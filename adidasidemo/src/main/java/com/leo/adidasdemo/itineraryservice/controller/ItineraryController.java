@@ -1,5 +1,6 @@
 package com.leo.adidasdemo.itineraryservice.controller;
 
+import com.leo.adidasdemo.itineraryservice.entities.Route;
 import com.leo.adidasdemo.itineraryservice.service.PathService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +19,12 @@ public class ItineraryController {
     @GetMapping("/getShortestPath")
     public List<String> getShortestPath(@RequestParam(value = "start", required = false) String start, @RequestParam(value = "end", required = false) String end) {
         List<String> res = pathService.getShorestRoute(start, end);
+        return res;
+    }
+
+    @GetMapping("/getAllRoute")
+    public List<Route> getAllRoute() {
+        List<Route> res = pathService.getAllRoute();
         return res;
     }
 }

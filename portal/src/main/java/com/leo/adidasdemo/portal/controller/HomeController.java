@@ -1,16 +1,23 @@
 package com.leo.adidasdemo.portal.controller;
 
-import org.springframework.stereotype.Controller;
+import com.leo.adidasdemo.portal.model.Route;
+import com.leo.adidasdemo.portal.service.HomeService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.List;
+
+@RestController
 public class HomeController {
-    @GetMapping("/")
-    public String greeting(@RequestParam(name="name", required=false, defaultValue="World") String name, Model model) {
-        model.addAttribute("name", name);
-        return "index";
-    }
+    @Autowired
+    private HomeService homeService;
 
+    @GetMapping("/getAllRoute")
+    public Iterable<Route> getAllRoute() {
+        Iterable<Route> res = homeService.getAllRoute();
+        return res;
+    }
 }

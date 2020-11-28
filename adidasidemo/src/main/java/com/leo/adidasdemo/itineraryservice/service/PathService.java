@@ -20,6 +20,11 @@ public class PathService {
     @Autowired
     private RouteRepository routeRepository;
 
+    public List<Route> getAllRoute() {
+        List<Route> routeList = routeRepository.findAll();
+        return routeList;
+    }
+
     public List<String> getShorestRoute(String start,String end) {
         List<Route> routeList = routeRepository.findAll();
         Map<String, List<Route>> routePerOrginal = routeList.stream().collect(groupingBy(Route::getOriginal));
