@@ -17,13 +17,13 @@ public class ItineraryController {
     private PathService pathService;
 
     @GetMapping("/getShortestPath")
-    public List<String> getShortestPath(@RequestParam(value = "start", required = false) String start, @RequestParam(value = "end", required = false) String end) {
+    public List<String> getShortestPath(@RequestParam(value = "start") String start, @RequestParam(value = "end") String end) {
         List<String> res = pathService.getShorestRoute(start, end);
         return res;
     }
 
     @GetMapping("/getLeastTransitRoute")
-    public List<String> getLeastTransitRoute(@RequestParam(value = "start", required = false) String start, @RequestParam(value = "end", required = false) String end) {
+    public List<String> getLeastTransitRoute(@RequestParam(value = "start") String start, @RequestParam(value = "end") String end) {
         List<String> res = pathService.getLeastTransitRoute(start, end);
         return res;
     }

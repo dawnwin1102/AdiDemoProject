@@ -20,4 +20,10 @@ public class HomeController {
         Iterable<Route> res = homeService.getAllRoute();
         return res;
     }
+
+    @GetMapping("/getItineraries")
+    public Iterable<Route> getItineraries () {
+        Iterable<Route> res = homeService.getItineraries();
+        return res;
+    }
 }

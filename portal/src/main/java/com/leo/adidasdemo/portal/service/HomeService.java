@@ -20,4 +20,9 @@ public class HomeService {
         Route[] routes=this.restTemplate.getForObject("http://localhost:8080/itinerary/getAllRoute",Route[].class);
         return Arrays.stream(routes).collect(Collectors.toList());
     }
+
+    public Iterable<Route> getItineraries(){
+        //Route[] routes=this.restTemplate.getForObject("http://localhost:8080/itinerary/getAllRoute",Route[].class);
+        return new ArrayList<>();
+    }
 }
