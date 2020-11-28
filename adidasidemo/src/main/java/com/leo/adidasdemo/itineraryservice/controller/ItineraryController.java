@@ -22,6 +22,12 @@ public class ItineraryController {
         return res;
     }
 
+    @GetMapping("/getLeastTransitRoute")
+    public List<String> getLeastTransitRoute(@RequestParam(value = "start", required = false) String start, @RequestParam(value = "end", required = false) String end) {
+        List<String> res = pathService.getLeastTransitRoute(start, end);
+        return res;
+    }
+
     @GetMapping("/getAllRoute")
     public List<Route> getAllRoute() {
         List<Route> res = pathService.getAllRoute();

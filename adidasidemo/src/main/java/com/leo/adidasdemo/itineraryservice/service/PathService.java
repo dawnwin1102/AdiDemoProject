@@ -20,15 +20,29 @@ public class PathService {
     @Autowired
     private RouteRepository routeRepository;
 
+    private List<Route> routeList;
+    private Map<String, List<Route>> routePerOrginal;
+
+    /**
+     * Get all routes from db
+     * @return
+     */
     public List<Route> getAllRoute() {
         List<Route> routeList = routeRepository.findAll();
         return routeList;
     }
 
+    /**
+     * Get shortest path
+     * @param start
+     * @param end
+     * @return
+     */
     public List<String> getShorestRoute(String start,String end) {
-        List<Route> routeList = routeRepository.findAll();
-        Map<String, List<Route>> routePerOrginal = routeList.stream().collect(groupingBy(Route::getOriginal));
-        routePerOrginal.forEach((k, v) -> {
+        //List<Route> routeList = routeRepository.findAll();
+        //Map<String, List<Route>> routePerOrginal = this.routeList.stream().collect(groupingBy(Route::getOriginal));
+        this.retriveData();
+        this.routePerOrginal.forEach((k, v) -> {
             graph.addVertex(k, v.stream().map(
                     r -> new Vertex(r.getDestiny(), r.getCost()))
                     .collect(Collectors.toList()));
@@ -36,6 +50,28 @@ public class PathService {
         List<String> res= graph.getShortestPath(start,end);
         res.add(start);
         return Lists.reverse(res) ;
+    }
 
+    /**
+     * Get least transit route
+     * @param start
+     * @param end
+     * @return
+     */
+    public List<String> getLeastTransitRoute(String start,String end) {
+        this.retriveData();
+        this.routePerOrginal.forEach((k, v) -> {
+            graph.addVertex(k, v.stream().map(
+                    r -> new Vertex(r.getDestiny(), 1))
+                    .collect(Collectors.toList()));
+        });
+        List<String> res= graph.getShortestPath(start,end);
+        res.add(start);
+        return Lists.reverse(res) ;
+    }
+
+    private void retriveData(){
+        this.routeList = routeRepository.findAll();
+        this.routePerOrginal=routeList.stream().collect(groupingBy(Route::getOriginal));
     }
 }

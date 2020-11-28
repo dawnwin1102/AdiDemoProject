@@ -9,6 +9,11 @@ public class Vertex implements Comparable<Vertex> {
         super();
         this.id = id;
         this.distance = distance;
+//        if (this.distance==0||this.distance==Integer.MAX_VALUE){
+//            this.distance=distance;
+//        }else {
+//            this.distance=1;
+//        }
     }
 
     public String getId() {
