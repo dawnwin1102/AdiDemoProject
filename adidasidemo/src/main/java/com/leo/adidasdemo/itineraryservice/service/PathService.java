@@ -7,6 +7,8 @@ import com.leo.adidasdemo.itineraryservice.util.Graph;
 import com.leo.adidasdemo.itineraryservice.util.Vertex;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -68,6 +70,15 @@ public class PathService {
         List<String> res= graph.getShortestPath(start,end);
         res.add(start);
         return Lists.reverse(res) ;
+    }
+
+    public Map<String,List<String>> getItineraries(String start, String end) {
+        Map<String,List<String>> resultMap=new HashMap<>();
+        List<String> shorestRouteList= this.getShorestRoute(start,end);
+        List<String> leastTransitRouteList= this.getLeastTransitRoute(start,end);
+        resultMap.put("shorestRoute",shorestRouteList);
+        resultMap.put("leastTransitRoute",leastTransitRouteList);
+        return resultMap;
     }
 
     private void retriveData(){

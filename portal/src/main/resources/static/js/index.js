@@ -18,8 +18,34 @@ $(document).ready(function () {
         validateInput();
     });
     $("#searchButton").click(() => {
-        $.get("getItineraries", function (data) {
-            alert("Data Loaded: " + data);
+        let orginal=$("#inputOrginal").val();
+        let destiny=$("#inputDestiny").val();
+        $.get(`getItineraries?orginal=${orginal}&destiny=${destiny}`, function (data) {
+            let shorestRoute=data.result.shorestRoute;
+            let leastTransitRoute=data.result.leastTransitRoute;
+            // clear table
+            $("#shorestRouteTable").find("tr").remove()
+            $("#leastTransitRouteTable").find("tr").remove()
+            for (let i = 0; i < shorestRoute.length-1; i++) {
+                let singalRoute=allroutes.find(x=>x.original===shorestRoute[i]&&x.destiny===shorestRoute[i+1]);
+                let tr=` <tr>
+                        <td>${singalRoute.original}</td>
+                        <td>${singalRoute.destiny}</td>
+                        <td>${singalRoute.departuretime}</td>
+                        <td>${singalRoute.arrivaltime}</td>
+                    </tr>`;
+                $("#shorestRouteTable").append(tr);
+            }
+            for (let i = 0; i < leastTransitRoute.length-1; i++) {
+                let singalRoute=allroutes.find(x=>x.original===leastTransitRoute[i]&&x.destiny===leastTransitRoute[i+1]);
+                let tr=` <tr>
+                        <td>${singalRoute.original}</td>
+                        <td>${singalRoute.destiny}</td>
+                        <td>${singalRoute.departuretime}</td>
+                        <td>${singalRoute.arrivaltime}</td>
+                    </tr>`;
+                $("#leastTransitRouteTable").append(tr);
+            }
         });
     });
 })

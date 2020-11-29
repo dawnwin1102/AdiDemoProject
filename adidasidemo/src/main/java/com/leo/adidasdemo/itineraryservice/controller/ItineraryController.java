@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController()
 @RequestMapping("itinerary")
@@ -31,6 +32,12 @@ public class ItineraryController {
     @GetMapping("/getAllRoute")
     public List<Route> getAllRoute() {
         List<Route> res = pathService.getAllRoute();
+        return res;
+    }
+
+    @GetMapping("/getItineraries")
+    public Map<String,List<String>> getItineraries(@RequestParam(value = "start") String start, @RequestParam(value = "end") String end) {
+        Map<String,List<String>> res = pathService.getItineraries(start, end);
         return res;
     }
 }
