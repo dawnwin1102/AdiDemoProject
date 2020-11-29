@@ -2,11 +2,14 @@ package com.leo.adidasdemo.routeportal.service;
 
 import com.leo.adidasdemo.routeportal.feign.RouteServiceFeignClinet;
 import com.leo.adidasdemo.routeportal.model.Route;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.cloud.client.loadbalancer.LoadBalancerClient;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
@@ -14,6 +17,7 @@ import java.util.stream.Collectors;
 public class HomeService {
     @Autowired
     private RestTemplate restTemplate;
+
     @Autowired
     private RouteServiceFeignClinet routeServiceFeignClinet;
 
@@ -28,5 +32,13 @@ public class HomeService {
         //Object routes = this.restTemplate.getForObject(url, Object.class);
         Object routes =routeServiceFeignClinet.getItineraries(orginal,destiny);
         return routes;
+    }
+
+    private  Iterable<Route> getAllRouteFallback() {
+        return new ArrayList<Route>();
+    }
+
+    private Object getItinerariesFallback(String orginal, String destiny) {
+        return  "";
     }
 }
