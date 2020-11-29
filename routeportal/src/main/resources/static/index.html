@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Itineraries Search</title>
+    <!-- Bootstrap core CSS -->
+    <link href="/webjars/bootstrap/4.5.3/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron.css" rel="stylesheet">
+</head>
+<body>
+<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+            aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
+</nav>
+
+<main role="main">
+    <div class="jumbotron">
+        <div class="container">
+            <h4 class="display-4">Please select the orginal and end city.</h4>
+            <p>This is a itineraries search website.It will provide itineraries suggestion for you.</p>
+        </div>
+    </div>
+    <div class="container">
+        <div class="alert alert-danger" role="alert" id="invalideError">
+            Orginal and Destiny should not be same.
+        </div>
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputOrginal">Orginal City</label>
+                    </div>
+                    <select class="custom-select" id="inputOrginal">
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="inputOrginal">Destiny City</label>
+                    </div>
+                    <select class="custom-select" id="inputDestiny">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="row" style="float: right">
+            <button disabled id="searchButton" type="button" class="col btn btn-primary">Submit</button>
+        </div>
+        <div class="row" style="clear: both;margin-top: 3em">
+            <div class="col-md-6">
+                <h6 class="display-6">Shorest Route:</h6>
+                <table class="table table-striped" id="shorestRouteTable">
+                    <thead>
+                    <tr>
+                        <th scope="col">Orginal City</th>
+                        <th scope="col">Destiny City</th>
+                        <th scope="col">Departure Time</th>
+                        <th scope="col">Arrival Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-6">
+                <h6 class="display-6">Least Transit Route:</h6>
+                <table class="table table-striped" id="leastTransitRouteTable">
+                    <thead>
+                    <tr>
+                        <th scope="col">Orginal City</th>
+                        <th scope="col">Destiny City</th>
+                        <th scope="col">Departure Time</th>
+                        <th scope="col">Arrival Time</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+</main>
+
+<footer class="container">
+
+</footer>
+<script src="/webjars/jquery/3.5.1/jquery.min.js"></script>
+<script src="/webjars/bootstrap/4.5.3/js/bootstrap.bundle.min.js"></script>
+<script src="/webjars/lodash/4.17.4/lodash.min.js"> </script>
+<script src="js/index.js"></script>
+</html>
