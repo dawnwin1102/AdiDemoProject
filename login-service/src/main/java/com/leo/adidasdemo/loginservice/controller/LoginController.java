@@ -26,7 +26,7 @@ public class LoginController {
     @PostMapping("/login")
     public Result login(@RequestBody Admin admin){
         boolean login = adminservice.login(admin);
-        if(login){  //如果验证成功
+        if(login){
             Map<String,String> info = new HashMap<>();
             info.put("username",admin.getName());
             String token = JwtUtil.createJWT(UUID.randomUUID().toString(), admin.getName(), null);

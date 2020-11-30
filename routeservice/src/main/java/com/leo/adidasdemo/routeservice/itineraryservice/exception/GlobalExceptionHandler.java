@@ -11,6 +11,12 @@ import javax.servlet.http.HttpServletRequest;
 @ResponseBody
 @Slf4j
 public class GlobalExceptionHandler {
+    /**
+     * Global exception handler
+     * @param request
+     * @param e
+     * @return
+     */
     @ExceptionHandler(value = Exception.class)
     public CodeMsg exceptionHandler(HttpServletRequest request, Exception e){
         log.error(e.getMessage());

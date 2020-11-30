@@ -10,17 +10,15 @@ import java.util.Base64;
 import java.util.Date;
 
 /**
- * JWT工具类
+ * JWTUtil
  */
 public class JwtUtil {
 
-    //有效期为
-    public static final Long JWT_TTL = 3600000L;// 60 * 60 *1000  一个小时
-    //设置秘钥明文
+    public static final Long JWT_TTL = 3600000L;
     public static final String JWT_KEY = "leomao";
 
     /**
-     * 创建token
+     * Create token
      * @param id
      * @param subject
      * @param ttlMillis
@@ -49,7 +47,7 @@ public class JwtUtil {
     }
 
     /**
-     * 生成加密后的秘钥 secretKey
+     * Generate secretKey
      * @return
      */
     public static SecretKey generalKey() {

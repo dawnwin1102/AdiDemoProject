@@ -72,6 +72,12 @@ public class PathService {
         return Lists.reverse(res) ;
     }
 
+    /**
+     * Get shortest and least transit route
+     * @param start
+     * @param end
+     * @return
+     */
     public Map<String,List<String>> getItineraries(String start, String end) {
         Map<String,List<String>> resultMap=new HashMap<>();
         List<String> shorestRouteList= this.getShorestRoute(start,end);
@@ -81,6 +87,9 @@ public class PathService {
         return resultMap;
     }
 
+    /**
+     * Get data from db
+     */
     private void retriveData(){
         this.routeList = routeRepository.findAll();
         this.routePerOrginal=routeList.stream().collect(groupingBy(Route::getOriginal));

@@ -8,13 +8,11 @@ import javax.crypto.spec.SecretKeySpec;
 import java.util.Base64;
 
 public class JwtUtil {
-    //有效期为
     public static final Long JWT_TTL = 3600000L;// 60 * 60 *1000  一个小时
-    //设置秘钥明文
     public static final String JWT_KEY = "leomao";
 
     /**
-     * 生成加密后的秘钥 secretKey
+     * Generate secretKey
      *
      * @return
      */
@@ -25,7 +23,7 @@ public class JwtUtil {
     }
 
     /**
-     * 解析
+     * Parse JWT
      *
      * @param jwt
      * @return

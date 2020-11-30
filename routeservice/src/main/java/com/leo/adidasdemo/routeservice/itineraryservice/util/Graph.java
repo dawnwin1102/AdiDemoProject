@@ -19,6 +19,12 @@ public class Graph {
         this.vertices.put(id, vertex);
     }
 
+    /**
+     * Dijkstras shortest path implemention
+     * @param start
+     * @param finish
+     * @return
+     */
     public List<String> getShortestPath(String start, String finish) {
         final Map<String, Integer> distances = new HashMap<String, Integer>();
         final Map<String, Vertex> previous = new HashMap<String, Vertex>();
