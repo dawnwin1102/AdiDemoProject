@@ -24,8 +24,8 @@ $(document).ready(function () {
             let shorestRoute=data.result.shorestRoute;
             let leastTransitRoute=data.result.leastTransitRoute;
             // clear table
-            $("#shorestRouteTable").find("tr").remove()
-            $("#leastTransitRouteTable").find("tr").remove()
+            $("#shorestRouteTable").find("tbody tr").remove()
+            $("#leastTransitRouteTable").find("tbody tr").remove()
             for (let i = 0; i < shorestRoute.length-1; i++) {
                 let singalRoute=allroutes.find(x=>x.original===shorestRoute[i]&&x.destiny===shorestRoute[i+1]);
                 let tr=` <tr>
@@ -33,6 +33,7 @@ $(document).ready(function () {
                         <td>${singalRoute.destiny}</td>
                         <td>${singalRoute.departuretime}</td>
                         <td>${singalRoute.arrivaltime}</td>
+                        <td>${singalRoute.cost}</td>
                     </tr>`;
                 $("#shorestRouteTable").append(tr);
             }
@@ -43,6 +44,7 @@ $(document).ready(function () {
                         <td>${singalRoute.destiny}</td>
                         <td>${singalRoute.departuretime}</td>
                         <td>${singalRoute.arrivaltime}</td>
+                        <td>${singalRoute.cost}</td>
                     </tr>`;
                 $("#leastTransitRouteTable").append(tr);
             }
