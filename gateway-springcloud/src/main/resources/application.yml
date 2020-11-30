@@ -9,3 +9,7 @@ spring:
           uri: lb://routeportal
           predicates:
             - Path=/**
+        - id: loginservice
+          uri: lb://loginservice
+          predicates:
+            - Path=/**
