@@ -2,10 +2,6 @@
 This is a demo project for the follow requirement:
 We want to create a service that given an origin city will return a list of itineraries , one based in the less number of
 connections and the second based in the less time
-
-# Table of Contents
-[[_TOC_]]
-
 # System Design
 ## Core service:
 - Route Query Service
@@ -20,7 +16,7 @@ For this purpose we will use services list below:
 - Login Server(Simple demo for issuing JWT token for API Gateway auth)
 
 # System Diagram
-![DemoDiagram.jpg](/.attachments/DemoDiagram-a8233cd6-566d-4051-8a25-949ef4590c03.jpg)
+![DemoDiagram.jpg](https://leowebsite.blob.core.windows.net/images/DemoDiagram.jpg)
 
 # RouteService
 - For demo project we use sqlite as our db to store route info.
@@ -46,11 +42,11 @@ itineraries of less connections result then return.
 2. Use mvn build whole project.
 3. Start each service.
 4. Go to Eureka endpoint:http://localhost:8761/ and all service registered in eureka will displayed as below:
-![image.png](/.attachments/image-55374912-8e2d-43a6-9368-8e8b8d626d3a.png)
+![image.png](https://leowebsite.blob.core.windows.net/images/eureka.png)
 5.There is 2 way to access route portal
 1)Via apigateway:/apigateway/8060(Author)
 2)Type the url of route portal:http://localhost:8081/
 (Api Gateway's AuthorizeFilter is set to off for easily test via route portal. If open it the login service need to start and get JWT token then attach it in request head)
 5. Just select Orginal City and Destiny City then submit in portal, result will show below:
-![image.png](/.attachments/image-82b66a97-fbbc-4f39-a97a-e893d038e8c5.png)
+![image.png](https://leowebsite.blob.core.windows.net/images/routeportal.png)
 
