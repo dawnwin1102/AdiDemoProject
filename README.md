@@ -2,7 +2,6 @@
 This is a demo project for the follow requirement:
 We want to create a service that given an origin city will return a list of itineraries , one based in the less number of
 connections and the second based in the less time
-# System Design
 ## Core service:
 - Route Query Service
 This is the service which provide itineraries calculator function.
