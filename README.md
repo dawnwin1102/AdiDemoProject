@@ -2,7 +2,6 @@
 This is a demo project for the follow requirement:
 We want to create a service that given an origin city will return a list of itineraries , one based in the less number of
 connections and the second based in the less time
-# System Design
 ## Core service:
 - Route Query Service
 This is the service which provide itineraries calculator function.
@@ -39,14 +38,23 @@ itineraries of less connections result then return.
 
 # Run locally
 1. Clone the project from git hub.
-2. Use mvn build whole project.
-3. Start each service.
+2. Use mvn build each project.
+3. Start 3 core service: discoveryserver,routeservice,routeportal(this is a microservice implemention so wen run more than one instance of each service, discoveryserver and robin will handle the load balance for us)
 4. Go to Eureka endpoint:http://localhost:8761/ and all service registered in eureka will displayed as below:
 ![image.png](https://leowebsite.blob.core.windows.net/images/eureka.png)
 5.There is 2 way to access route portal
 1)Via apigateway:/apigateway/8060(Author)
 2)Type the url of route portal:http://localhost:8081/
 (Api Gateway's AuthorizeFilter is set to off for easily test via route portal. If open it the login service need to start and get JWT token then attach it in request head)
-5. Just select Orginal City and Destiny City then submit in portal, result will show below:
+6. Just select Orginal City and Destiny City then submit in portal, result will show below:
 ![image.png](https://leowebsite.blob.core.windows.net/images/routeportal.png)
+7. Start gateway-springcloud service will provide the api gateway ability，and with login-server can auth request to apis
+# TODO
+This is just a simple demo for microservice implemention, for future development we should add features list as below:
+- Add Spring Cloud Config to provides server-side and client-side support for externalized configuration in a distributed system.
+- Add Redis to reduce request times to DB.
+- Setup ELK system to store and anaylize logs 
+- Setup Zipkin server and Spring Cloud Sleuth for Monitoring Microservices
+- Setup a Oauth server as a center author service to author our apis
+- Create docke files to build docker image and run in docker
 
